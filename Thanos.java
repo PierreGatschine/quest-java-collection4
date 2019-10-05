@@ -21,10 +21,18 @@ public class Thanos {
         // Vision has a Tulip
         // Captain America has a Lily
         // Doctor Strange and Black Widow have a Violet
-
+        Map<String, Flower> party = new TreeMap<>();
+        party.put(hulk.getName(), rose);
+        party.put(blackWidow.getName(), violet);
+        party.put(captainAmerica.getName(), lily);
+        party.put(thor.getName(), rose);
+        party.put(vision.getName(), tulip);
+        party.put(scarletWitch.getName(), rose);
+        party.put(doctorStrange.getName(), violet);
         // TODO 2 : Print if `begonia` is contained in the TreeMap
-
+        System.out.println(party.containsValue(begonia));
         // TODO 3 : For each hero, alphabetically, print the corresponding flower
-
+        for (Map.Entry<String, Flower> entry : party.entrySet())
+            System.out.println(entry.getValue().getName());
     }
 }
