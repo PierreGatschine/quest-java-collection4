@@ -1,39 +1,45 @@
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Thanos {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        Hero hulk = new Hero("Hulk", 49);
-        Hero blackWidow = new Hero("Black Widow", 34);
-        Hero captainAmerica = new Hero("Captain America", 100);
-        Hero thor = new Hero("Thor", 1501);
-        Hero vision = new Hero("Vision", 3);
-        Hero scarletWitch = new Hero("Scarlet Witch", 29);
-        Hero doctorStrange = new Hero("Doctor Strange", 42);
-;
-        Flower lily = new Flower("Lily");
-        Flower tulip = new Flower("Tulip");
-        Flower begonia = new Flower("Begonia");
-        Flower violet = new Flower("Violet");
-        Flower rose = new Flower("Rose");
+		List<Hero> heroes = new ArrayList<>();
 
-        // TODO 1 : Create a TreeMap where :
-        // Hulk, Thor and Scarlet Witch have a Rose
-        // Vision has a Tulip
-        // Captain America has a Lily
-        // Doctor Strange and Black Widow have a Violet
-        Map<String, Flower> party = new TreeMap<>();
-        party.put(hulk.getName(), rose);
-        party.put(blackWidow.getName(), violet);
-        party.put(captainAmerica.getName(), lily);
-        party.put(thor.getName(), rose);
-        party.put(vision.getName(), tulip);
-        party.put(scarletWitch.getName(), rose);
-        party.put(doctorStrange.getName(), violet);
-        // TODO 2 : Print if `begonia` is contained in the TreeMap
-        System.out.println(party.containsValue(begonia));
-        // TODO 3 : For each hero, alphabetically, print the corresponding flower
-        for (Map.Entry<String, Flower> entry : party.entrySet())
-            System.out.println(entry.getValue().getName());
-    }
+		heroes.add(new Hero("Hulk", 49));
+		heroes.add(new Hero("Black Widow", 34));
+		heroes.add(new Hero("Captain America", 100));
+		heroes.add(new Hero("Thor", 1501));
+
+		Collections.sort(heroes);
+
+		System.out.println("\nOrder by name:");
+		Thanos.showList(heroes);
+
+		Comparator<Hero> comparator = new Comparator<>() {
+
+			@Override
+			public int compare(Hero hero1, Hero hero2) {
+
+				return hero2.getAge() - hero1.getAge();
+			}
+		};
+
+		Collections.sort(heroes, comparator);
+
+		System.out.println("\nOrder by age:");
+		Thanos.showList(heroes);
+	}
+
+	private static void showList(List<Hero> heroes) {
+		// TODO Auto-generated method stub
+		for (Hero toto : heroes) {
+			System.out.println(toto.getName() + ", " + toto.getAge());
+		}
+	}
+
 }
