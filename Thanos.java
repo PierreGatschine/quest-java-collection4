@@ -18,7 +18,7 @@ public class Thanos {
 		Collections.sort(heroes);
 
 		System.out.println("\nOrder by name:");
-		Thanos.showList(heroes);
+		showList(heroes);
 
 		Comparator<Hero> comparator = new Comparator<>() {
 
@@ -32,14 +32,13 @@ public class Thanos {
 		Collections.sort(heroes, comparator);
 
 		System.out.println("\nOrder by age:");
-		Thanos.showList(heroes);
+		showList(heroes);
 	}
 
 	private static void showList(List<Hero> heroes) {
 		// TODO Auto-generated method stub
-		for (Hero toto : heroes) {
-			System.out.println(toto.getName() + ", " + toto.getAge());
-		}
+		for (Hero toto : heroes) System.out.println(toto.getName() + ", " + toto.getAge());
+		
 	}
 
 }
